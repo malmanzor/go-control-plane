@@ -313,8 +313,8 @@ func (cache *snapshotCache) CreateWatch(request *Request, value chan Response) f
 	// if the requested version is up-to-date or missing a response, leave an open watch
 	if !exists || request.VersionInfo == version {
 		watchID := cache.nextWatchID()
-		cache.log.Debugf("open watch %d for %s%v from nodeID %q, version %q", watchID,
-			request.TypeUrl, request.ResourceNames, nodeID, request.VersionInfo)
+		cache.log.Debugf("open watch %d for %s%v from nodeID %q, version %q", watchID, request.TypeUrl, request.ResourceNames, nodeID, request.VersionInfo)
+
 		info.mu.Lock()
 		info.watches[watchID] = ResponseWatch{Request: request, Response: value}
 		info.mu.Unlock()
@@ -358,8 +358,7 @@ func (cache *snapshotCache) respond(ctx context.Context, request *Request, value
 		}
 	}
 
-	cache.log.Debugf("respond %s%v version %q with version %q",
-		request.TypeUrl, request.ResourceNames, request.VersionInfo, version)
+	cache.log.Debugf("respond %s%v version %q with version %q", request.TypeUrl, request.ResourceNames, request.VersionInfo, version)
 
 	select {
 	case value <- createResponse(ctx, request, resources, version, heartbeat):
@@ -427,10 +426,10 @@ func (cache *snapshotCache) CreateDeltaWatch(request *DeltaRequest, state stream
 		if err != nil {
 			cache.log.Errorf("failed to compute version for snapshot resources inline, waiting for next snapshot update")
 		}
+
 		response, err := respondDelta(context.Background(), request, value, state, snapshot, cache.log)
 		if err != nil {
 			cache.log.Errorf("failed to respond with delta response, waiting for next snapshot update: %s", err)
-
 		}
 
 		delayedResponse = response == nil
@@ -438,9 +437,7 @@ func (cache *snapshotCache) CreateDeltaWatch(request *DeltaRequest, state stream
 
 	if delayedResponse {
 		watchID := cache.nextDeltaWatchID()
-		cache.log.Infof("open delta watch ID:%d for %s Resources:%v from nodeID: %q, system version %q", watchID,
-			t, state.GetResourceVersions(), nodeID, snapshot.GetVersion(t))
-
+		cache.log.Infof("open delta watch ID:%d for %s Resources:%v from nodeID: %q, system version %q", watchID, t, state.GetResourceVersions(), nodeID, snapshot.GetVersion(t))
 		info.SetDeltaResponseWatch(watchID, DeltaResponseWatch{Request: request, Response: value, StreamState: state})
 
 		return cache.cancelDeltaWatch(nodeID, watchID)
