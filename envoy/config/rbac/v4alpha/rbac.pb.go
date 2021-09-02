@@ -8,11 +8,11 @@ package envoy_config_rbac_v4alpha
 
 import (
 	_ "github.com/cncf/xds/go/udpa/annotations"
-	_ "github.com/envoyproxy/go-control-plane/envoy/annotations"
-	v4alpha2 "github.com/envoyproxy/go-control-plane/envoy/config/core/v4alpha"
-	v4alpha "github.com/envoyproxy/go-control-plane/envoy/config/route/v4alpha"
-	v4alpha1 "github.com/envoyproxy/go-control-plane/envoy/type/matcher/v4alpha"
-	v3 "github.com/envoyproxy/go-control-plane/envoy/type/v3"
+	_ "github.com/malmanzor/go-control-plane/envoy/annotations"
+	v4alpha2 "github.com/malmanzor/go-control-plane/envoy/config/core/v4alpha"
+	v4alpha "github.com/malmanzor/go-control-plane/envoy/config/route/v4alpha"
+	v4alpha1 "github.com/malmanzor/go-control-plane/envoy/type/matcher/v4alpha"
+	v3 "github.com/malmanzor/go-control-plane/envoy/type/v3"
 	_ "github.com/envoyproxy/protoc-gen-validate/validate"
 	proto "github.com/golang/protobuf/proto"
 	v1alpha1 "google.golang.org/genproto/googleapis/api/expr/v1alpha1"
