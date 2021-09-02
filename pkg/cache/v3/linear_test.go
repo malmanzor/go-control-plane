@@ -24,9 +24,9 @@ import (
 
 	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 
-	endpoint "github.com/envoyproxy/go-control-plane/envoy/config/endpoint/v3"
-	"github.com/envoyproxy/go-control-plane/pkg/cache/types"
-	"github.com/envoyproxy/go-control-plane/pkg/server/stream/v3"
+	endpoint "github.com/malmanzor/go-control-plane/envoy/config/endpoint/v3"
+	"github.com/malmanzor/go-control-plane/pkg/cache/types"
+	"github.com/malmanzor/go-control-plane/pkg/server/stream/v3"
 )
 
 const (

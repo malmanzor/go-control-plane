@@ -19,10 +19,10 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"github.com/envoyproxy/go-control-plane/pkg/cache/types"
-	"github.com/envoyproxy/go-control-plane/pkg/cache/v3"
-	rsrc "github.com/envoyproxy/go-control-plane/pkg/resource/v3"
-	"github.com/envoyproxy/go-control-plane/pkg/test/resource/v3"
+	"github.com/malmanzor/go-control-plane/pkg/cache/types"
+	"github.com/malmanzor/go-control-plane/pkg/cache/v3"
+	rsrc "github.com/malmanzor/go-control-plane/pkg/resource/v3"
+	"github.com/malmanzor/go-control-plane/pkg/test/resource/v3"
 )
 
 func TestSnapshotConsistent(t *testing.T) {
